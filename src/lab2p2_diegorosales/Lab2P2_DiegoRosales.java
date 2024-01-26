@@ -123,7 +123,7 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                        System.out.print(" Conferencista: "+curso.getInstructor());
                        System.out.print(" Duracion del curso: "+curso.getDuracion());
                        System.out.print(" Plataforma: "+curso.getPlataforma());
-                    
+                         System.out.println("");
                    }              
                     
                 } //Listar Recursos
@@ -210,7 +210,35 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                 
                 else if(opcionGestor==3){
                      if(usuariosValidos.get(nUsuario).getTipoUsuario().equals("bibliotecario")){
-                        System.out.println("Ha entrado con exito");
+                         System.out.println("Selecciona el tipo de recurso a eliminar: ");
+                         System.out.println("1. Libros");
+                        System.out.println("2. Articulos ");
+                        System.out.println("3. Conferencias ");
+                        System.out.println("4. Cursos ");
+                         int opcionr=mcgregor.nextInt();
+                         if(opcionr==1){
+                             System.out.println("Selecciona el libro a eliminar por su indice");
+                             int cont=1;
+                              for(Libros libro : libros){
+                       System.out.println(cont+". Titulo: " + libro.getTitulo());
+                     cont++;
+                   }
+                              int indiceEliminado=mcgregor.nextInt();
+                              libros.remove(indiceEliminado-1);
+                         }
+                         
+                         else if(opcionr==2){
+                             
+                         }
+                         else if(opcionr==3){
+                             
+                         }
+                         else if(opcionr==4){
+                             
+                         }
+                         
+                         
+                         
                     }
                     else{
                         System.out.println("Esta seccion no es accesible para ti, porfavor elige algo dentro de tus parametros ");
