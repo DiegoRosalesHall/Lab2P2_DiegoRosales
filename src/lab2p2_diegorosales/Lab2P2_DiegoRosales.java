@@ -124,7 +124,8 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                        System.out.print(" Duracion del curso: "+curso.getDuracion());
                        System.out.print(" Plataforma: "+curso.getPlataforma());
                          System.out.println("");
-                   }              
+                   }
+                     System.out.println("");
                     
                 } //Listar Recursos
                 
@@ -217,10 +218,10 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                         System.out.println("4. Cursos ");
                          int opcionr=mcgregor.nextInt();
                          if(opcionr==1){
-                             System.out.println("Selecciona el libro a eliminar por su indice");
+                             System.out.println("Selecciona el libro a eliminar por su indice: ");
                              int cont=1;
                               for(Libros libro : libros){
-                       System.out.println(cont+". Titulo: " + libro.getTitulo());
+                       System.out.println(cont+". " + libro.getTitulo());
                      cont++;
                    }
                               int indiceEliminado=mcgregor.nextInt();
@@ -228,13 +229,35 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                          }
                          
                          else if(opcionr==2){
-                             
+                             System.out.println("Selecciona el articulo a eliminar por su indice: ");
+                              for(Articulos articulo : articulos){
+                                  int cont=1;
+                       System.out.print(cont+". " + articulo.getTitulo());
+                      cont++;
+                   }
+                              int indiceEliminado=mcgregor.nextInt();
+                              articulos.remove(indiceEliminado-1);
+                              
                          }
                          else if(opcionr==3){
-                             
+                             System.out.println("Selecciona la conferencia a eliminar por su indice: ");
+                                     int cont=1;
+                                        for(Conferencias conferencia : conferencias){
+                       System.out.print(cont+". " + conferencia.getTitulo());
+
+                   }
+                                        int indiceEliminado=mcgregor.nextInt();
+                                        conferencias.remove(indiceEliminado-1);
                          }
                          else if(opcionr==4){
-                             
+                             System.out.println("Selecciona el curso a eliminar por su indice: ");
+                             int cont=1;
+                              for(Cursos curso : cursos){
+                       System.out.print(cont+". " + curso.getTitulo());
+                     
+                   }
+                              int indiceEliminado=mcgregor.nextInt();
+                              cursos.remove(indiceEliminado-1);
                          }
                          
                          
@@ -247,7 +270,135 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                 
                 else if(opcionGestor==4){
                     if(usuariosValidos.get(nUsuario).getTipoUsuario().equals("bibliotecario")){
-                        System.out.println("Ha entrado con exito");
+                        System.out.println("Selecciona el tipo de recurso a modificar de forma total: ");
+                         System.out.println("1. Libros");
+                        System.out.println("2. Articulos ");
+                        System.out.println("3. Conferencias ");
+                        System.out.println("4. Cursos ");
+                         int opcionr=mcgregor.nextInt();
+                         
+                         if(opcionr==1){
+                    System.out.println("Elige el libro que deseas modificar de forma total por su indice: ");
+                    int cont=1;
+                   for(Libros libro : libros){
+                       System.out.print(cont+". Titulo: " + libro.getTitulo());
+                       System.out.print(" Autor: "+libro.getAutor());
+                       System.out.print(" Genero: "+libro.getGenero());
+                       System.out.print(" Año: "+libro.getAño());
+                       System.out.println(" Disponibilidad : "+libro.getDisponibilidad());
+                       cont++;
+                   }
+                    System.out.println(""); 
+                    int indiceMod=mcgregor.nextInt()-1;
+                             System.out.println("Ingrese el nuevo titulo del libro: ");
+                             String nuevoTitulo = mcgregorstring.nextLine();
+                             libros.get(indiceMod).setTitulo(nuevoTitulo);
+                             System.out.println("Ingrese el nuevo autor del libro: ");
+                             String nuevoAutor = mcgregorstring.nextLine();
+                             libros.get(indiceMod).setAutor(nuevoAutor);
+                             System.out.println("Ingrese el nuevo genero del libro: ");
+                             String nuevoGenero = mcgregorstring.nextLine();
+                             libros.get(indiceMod).setGenero(nuevoGenero);
+                             System.out.println("Ingrese su nuevo de lanzamiento año del libro: ");
+                             String nuevoAño=mcgregorstring.nextLine();
+                             libros.get(indiceMod).setAño(nuevoAño);
+                             System.out.println("Ingrese su nueva disponibilidad: (si/no)");
+                             String nuevaDisp = mcgregorstring.nextLine();
+                             libros.get(indiceMod).setDisponibilidad(nuevaDisp);
+                         }
+                         
+                         else if(opcionr==2){
+                             
+                             System.out.println("Elige el articulo que quieras modificar de forma total por su indice: ");
+                             int cont=1;
+                             for(Articulos articulo : articulos){
+                       System.out.print(cont+". Titulo: " + articulo.getTitulo());
+                       System.out.print(" Autor: "+articulo.getAutor());
+                       System.out.print(" Tema: "+articulo.getTema());
+                       System.out.print(" Fecha de publicacion: "+articulo.getPublicacion());
+                       System.out.println(" Disponibilidad : "+articulo.getAcceso());
+                       cont++;
+                   }
+                    System.out.println("");
+                    
+                    int indiceMod = mcgregor.nextInt();
+                             System.out.println("Ingrese el nuevo titulo del articulo: ");
+                            String nuevoTitulo = mcgregorstring.nextLine();
+                            articulos.get(indiceMod).setTitulo(nuevoTitulo);
+                             System.out.println("Ingrese el nuevo autor del articulo: ");
+                             String nuevoAutor=mcgregorstring.nextLine();
+                             articulos.get(indiceMod).setAutor(nuevoAutor);
+                             System.out.println("Ingrese el nuevo tema del articulo: ");
+                             String nuevoTema = mcgregorstring.nextLine();
+                             articulos.get(indiceMod).setTema(nuevoTema);
+                             System.out.println("Ingrese la nueva fecha de publicacion del articulo: " );
+                             String nuevaFecha = mcgregorstring.nextLine();
+                             articulos.get(indiceMod).setPublicacion(nuevaFecha);
+                             System.out.println("Ingresa el nuevo acceso: ");
+                             String nuevaDisp = mcgregorstring.nextLine();
+                             articulos.get(indiceMod).setAcceso(nuevaDisp);  
+                         }
+                         
+                         else if(opcionr==3){
+                       System.out.println("Elige la conferencia que quieras modificar por indice: ");
+                       int cont=1;
+                       for(Conferencias conferencia : conferencias){
+                       System.out.print(cont+ ". Titulo: " + conferencia.getTitulo());
+                       System.out.print(" Conferencista: "+conferencia.getConferencista());
+                       System.out.print(" Fecha: "+conferencia.getFecha());
+                       System.out.print(" Duracion: "+conferencia.getDuracion());
+                       System.out.println(" Enlace : "+conferencia.getEnlace());
+                       cont++;
+                   }
+                             System.out.println("");
+                             int indiceMod=mcgregor.nextInt();
+                             System.out.println("Ingrese el nuevo titulo de la conferencia: ");
+                             String nuevoTitulo = mcgregorstring.nextLine();
+                             conferencias.get(indiceMod).setTitulo(nuevoTitulo);
+                             System.out.println("Ingrese el nuevo conferencista: ");
+                             
+                             String nuevoConferencista = mcgregorstring.nextLine();
+                             conferencias.get(indiceMod).setConferencista(nuevoConferencista);
+                             System.out.println("Ingrese la fecha: ");
+                             String nuevaFecha = mcgregorstring.nextLine();
+                             conferencias.get(indiceMod).setFecha(nuevaFecha);
+                            
+                             System.out.println("Ingrese la nueva duracion de la conferencia: ");
+                             String nuevaDuracion = mcgregorstring.nextLine();
+                             conferencias.get(indiceMod).setDuracion(nuevaDuracion);
+                             System.out.println("Ingrese el nuevo enlace: ");
+                             String nuevoEnlace = mcgregorstring.nextLine();
+                             conferencias.get(indiceMod).setEnlace(nuevoEnlace);
+                             
+                             
+                         }
+                         else if(opcionr==4){
+                             int cont=1;
+                             System.out.println("Seleccione el curso a modificar por su indice: ");
+                     for(Cursos curso : cursos){
+                       System.out.print(cont+". Titulo: " + curso.getTitulo());
+                       System.out.print(" Conferencista: "+curso.getInstructor());
+                       System.out.print(" Duracion del curso: "+curso.getDuracion());
+                       System.out.print(" Plataforma: "+curso.getPlataforma());
+                         System.out.println("");
+                         cont++;
+                   }
+                     System.out.println("");
+                     int indiceMod= mcgregor.nextInt();
+                             System.out.println("Ingrese el nuevo titulo del curso: ");
+                             String nuevoTitulo = mcgregorstring.nextLine();
+                             cursos.get(indiceMod).setTitulo(nuevoTitulo);
+                             System.out.println("Ingrese el nuevo instructor del curso: ");
+                             String nuevoInstructor = mcgregorstring.nextLine();
+                             cursos.get(indiceMod).setInstructor(nuevoInstructor);
+                             System.out.println("Ingrese la nueva duracion del curso: ");
+                             String nuevaDuracion = mcgregorstring.nextLine();
+                             cursos.get(indiceMod).setDuracion(nuevaDuracion);
+                             System.out.println("Ingrese la nuevaplataforma");
+                             String nuevaPlataforma = mcgregorstring.nextLine();
+                             cursos.get(indiceMod).setPlataforma(nuevaPlataforma);
+                     
+                         }
                     }
                     else{
                         System.out.println("Esta seccion no es accesible para ti, porfavor elige algo dentro de tus parametros ");
