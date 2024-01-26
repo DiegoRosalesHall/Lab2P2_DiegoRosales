@@ -1,20 +1,29 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package lab2p2_diegorosales;
 
-/**
- *
- * @author Diego
- */
-public class Lab2P2_DiegoRosales {
+import java.util.Scanner;
 
-    /**
-     * @param args the command line arguments
-     */
+public class Lab2P2_DiegoRosales {
+public static Scanner mcgregor = new Scanner(System.in);
     public static void main(String[] args) {
-        // TODO code application logic here
+        int a=1;
+        while (a==1){
+        System.out.println("Menu");
+        System.out.println("1.  Iniciar sesion ");
+        System.out.println("2. Salir ");
+        int opcionMenu1 = mcgregor.nextInt();
+                
+        if(opcionMenu1 ==1){
+           
+        }// Inicio de sesion
+        else if(opcionMenu1 ==2){
+            a=0;
+        }// Salir
+        else{
+            System.out.println("Error, seleccion no valida");
+        }
+        
+    }
+        
     }
     
 }
