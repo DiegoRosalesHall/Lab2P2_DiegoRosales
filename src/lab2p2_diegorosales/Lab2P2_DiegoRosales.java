@@ -13,14 +13,19 @@ public static Scanner mcgregor = new Scanner(System.in);
         int opcionMenu1 = mcgregor.nextInt();
                 
         if(opcionMenu1 ==1){
-           
+            System.out.println("Ingrese su nombre: ");
         }// Inicio de sesion
+        
+        
+        
+        
+        
         else if(opcionMenu1 ==2){
             a=0;
         }// Salir
         else{
             System.out.println("Error, seleccion no valida");
-        }
+        } // Eleccion invalida
         
     }
         
