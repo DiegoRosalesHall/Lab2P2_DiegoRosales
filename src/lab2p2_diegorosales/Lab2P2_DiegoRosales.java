@@ -23,59 +23,148 @@ public static Scanner mcgregorstring = new Scanner(System.in);
             usuariosValidos.add(profesor);
             Usuarios bibliotecario = new Usuarios("Diego","2305","bibliotecario");
             usuariosValidos.add(bibliotecario);
-            
+            int b = 1;
+            int nUsuario = 0;
+            int contValidez = 0;
+            while(b==1){
             System.out.println("Ingrese su nombre de usuario: ");
             String nombreUsuario = mcgregorstring.nextLine();
             System.out.println("Ingrese su contraseña: ");
             String contrasenaUsuario = mcgregorstring.nextLine();
-            int nUsuario = 0;
-            int contValidez = 0;
+            
         
-            for (int i = 0; i < usuariosValidos.size(); i++) {
-                if(usuariosValidos.get(i).getNombreUsuario().equals(nombreUsuario) && usuariosValidos.get(i).getContrasenaUsuario().equals(contrasenaUsuario)){
-                    contValidez++;
-                  
+                for (int i = 0; i < usuariosValidos.size(); i++) {
+                    if (usuariosValidos.get(i).getNombreUsuario().equals(nombreUsuario) && usuariosValidos.get(i).getContrasenaUsuario().equals(contrasenaUsuario)) {
+                        contValidez++;
+
+                    }
+
+                    if (contValidez == 1) {
+                        
+                        nUsuario = i;
+                        break;
+                    } else {
+
+                        contValidez = 0;
+                    }
                 }
+            
+            
+            if(contValidez!=1){
+                System.out.println("Error, usuario/contrasena invalido, desea seguir?");
+                int c=1;
+                while(c==1){
                 
-              
-                
-                if(contValidez==1){
-                    System.out.println("Valido");
-                    nUsuario=i;
-                    break;
+                System.out.println("1. Volver a intentar");
+                System.out.println("2. Volver atras");
+                int opcionx= mcgregor.nextInt();
+                if(opcionx==1){
+                    c=0;
+                   
                 }
-                  else {
+                else if(opcionx==2){
+                    c=0;
+                    b=0;
+                }
+                else{
+                    c=1;
+                    System.out.println("Seleccion invalida");
+            }
+                }
+            }
+
+            if(contValidez==1){
+               int d=1;
+               System.out.println("Has iniciado sesion con exito! Bienvenido "+usuariosValidos.get(nUsuario).getNombreUsuario());
+               while(d==1){
+               
+                System.out.println("Selecciona lo que quieres hacer : ");
+                System.out.println("1. Listar recursos ");
+                System.out.println("2. Crear recursos");
+                System.out.println("3. Eliminar recursos");
+                System.out.println("4. Modificar recursos");
+                System.out.println("5. Cerrar sesion");
+                int opcionGestor = mcgregor.nextInt();
+                if(opcionGestor ==1){
+                    if(usuariosValidos.get(nUsuario).getTipoUsuario().equals("estudiante") ||usuariosValidos.get(nUsuario).getTipoUsuario().equals("profesor") || usuariosValidos.get(nUsuario).getTipoUsuario().equals("bibliotecario")){
+                        System.out.println("Ha entrado con exito");
+                    }
                     
-                    contValidez=0;
+                } //Listar Recursos
+                
+                else if(opcionGestor==2){
+                    if(usuariosValidos.get(nUsuario).getTipoUsuario().equals("profesor") || usuariosValidos.get(nUsuario).getTipoUsuario().equals("bibliotecario")){
+                        System.out.println("Ha entrado con exito");
+                    }
+                    else{
+                        System.out.println("Esta seccion no es accesible para ti, porfavor elige algo dentro de tus parametros ");
+                    }
+                } // Crear Recursos
+                
+                else if(opcionGestor==3){
+                    
+                } // Eliminar recursos
+                
+                else if(opcionGestor==4){
+                    
+                } // Modificar recursos
+                
+                else if(opcionGestor==5){
+                    d=0;
+                    b=0;
+                    
+                    System.out.println("Has cerrado sesion con exito!");
+                    System.out.println("");
                 }
+                
+                
+                
+                
+                else{
+                    System.out.println("Seleccion invalida, vuelva a intentarlo");
+                    
                 
             }
-            
-            if(contValidez==1){
-                System.out.println("Has iniciado sesion con exito! Bienvenido "+usuariosValidos.get(nUsuario).getNombreUsuario());
+                }
             }
             
             else{
-                System.out.println("El usuario/contraseña ingresado no es valido");
+                System.out.println("El usuario/contraseña ingresado no es valido, intentalo de nuevo!");
+            }
+                
+                
+                
+                
+            
             }
             
             
             
-        }// Inicio de sesion
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        }// fin de while
         
         
         
         
         
-        else if(opcionMenu1 ==2){
+        if(opcionMenu1 ==2){
             a=0;
         }// Salir
-        else{
-            System.out.println("Error, seleccion no valida");
-        } // Eleccion invalida
+
         
     }
         
     }
     
 }
+
