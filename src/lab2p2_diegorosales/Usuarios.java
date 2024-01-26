@@ -11,6 +11,7 @@ public class Usuarios {
         this.tipoUsuario = tipoUsuario;
     }
     
+    
 
     public String getNombreUsuario() {
         return nombreUsuario;
