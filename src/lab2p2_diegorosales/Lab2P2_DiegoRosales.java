@@ -236,11 +236,13 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                        System.out.println(cont+". " + libro.getTitulo());
                      cont++;
                    }
+                                 System.out.println("");
                               int indiceEliminado=mcgregor.nextInt();
-                              if(indiceEliminado>libros.size()){
+                              
+                              if(indiceEliminado>libros.size() || indiceEliminado==0){
                                   System.out.println("Ha intentado eliminar un elemento no existente, porfavor vuelva a intentarlo");
                               }
-                              else if(indiceEliminado<=libros.size()){
+                              else if(indiceEliminado<=libros.size() && indiceEliminado>0){
                               libros.remove(indiceEliminado-1);
                               }
                              }
@@ -257,11 +259,12 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                        System.out.print(cont+". " + articulo.getTitulo());
                       cont++;
                    }
+                                 System.out.println("");
                               int indiceEliminado=mcgregor.nextInt();
-                              if(indiceEliminado > articulos.size()){
+                              if(indiceEliminado > articulos.size() || indiceEliminado==0 ){
                                   System.out.println("Ha intentado eliminar un elemento no existente, porfavor vuelva a intentarlo");
                               }
-                              else if(indiceEliminado <= articulos.size()){
+                              else if(indiceEliminado <= articulos.size() && indiceEliminado>0){
                               articulos.remove(indiceEliminado-1);
                               }
                              }
@@ -277,11 +280,12 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                        System.out.print(cont+". " + conferencia.getTitulo());
 
                    }
+                                        System.out.println("");
                                         int indiceEliminado=mcgregor.nextInt();
-                                        if(indiceEliminado>conferencias.size()){
+                                        if(indiceEliminado>conferencias.size()|| indiceEliminado==0) {
                                             System.out.println("Ha intentado eliminar un elemento no existente, porfavor vuelva a intentarlo");
                                         }
-                                        else if(indiceEliminado<= conferencias.size()){
+                                        else if(indiceEliminado<= conferencias.size() && indiceEliminado>0){
                                         conferencias.remove(indiceEliminado-1);
                                         }
                              }
@@ -299,10 +303,10 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                    }
                               System.out.println("");
                               int indiceEliminado=mcgregor.nextInt();
-                              if(indiceEliminado > cursos.size()){
+                              if(indiceEliminado > cursos.size() || indiceEliminado==0){
                                   System.out.println("Ha intentado eliminar un elemento no existente, porfavor vuelva a intentarlo");
                               }
-                              else if(indiceEliminado<=conferencias.size()){
+                              else if(indiceEliminado<=conferencias.size() && indiceEliminado>0 ){
                                  
                               cursos.remove(indiceEliminado-1);
                          }
@@ -346,7 +350,7 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                    }
                     System.out.println(""); 
                     int indiceMod=mcgregor.nextInt()-1;
-                    if(indiceMod+1 > libros.size()){
+                    if(indiceMod+1 > libros.size() || (indiceMod+1)==0){
                         System.out.println("Error, has intentado modificar un elemento no existente, porfavor vuelve a intentarlo");
                     }
                     else if(indiceMod+1 <= libros.size()){
@@ -386,10 +390,10 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                     System.out.println("");
                     
                     int indiceMod = mcgregor.nextInt()-1;
-                    if(indiceMod+1 > articulos.size()){
+                    if(indiceMod+1 > articulos.size() || (indiceMod+1)==0){
                         System.out.println("Error, has intentado modificar un articulo no existente, porfavor vuelve a intentarlo");
                     }
-                    else if(indiceMod+1 <= articulos.size()){
+                    else if(indiceMod+1 <= articulos.size() ){
                              System.out.println("Ingrese el nuevo titulo del articulo: ");
                             String nuevoTitulo = mcgregorstring.nextLine();
                             articulos.get(indiceMod).setTitulo(nuevoTitulo);
@@ -426,7 +430,7 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                    }
                              System.out.println("");
                              int indiceMod=mcgregor.nextInt()-1;
-                             if(indiceMod+1>conferencias.size()){
+                             if(indiceMod+1>conferencias.size() || (indiceMod+1)==0 ){
                                  System.out.println("Error, has intentado modificar una conferencia no existente, porfavor vuelve a intentarlo");
                              }
                              else if(indiceMod <= conferencias.size()){
@@ -469,7 +473,7 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                    }
                      System.out.println("");
                      int indiceMod= mcgregor.nextInt()-1;
-                     if(indiceMod+1>cursos.size()){
+                     if(indiceMod+1>cursos.size() || (indiceMod+1)==0 ){
                          System.out.println("Error, has intentado modificar un curso no existente, porfavor vuelve a intentarlo");
                      }
                      else if(indiceMod+1<=cursos.size()){
