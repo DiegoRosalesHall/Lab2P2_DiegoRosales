@@ -8,14 +8,7 @@ public static Scanner mcgregor = new Scanner(System.in);
 public static Scanner mcgregorstring = new Scanner(System.in);
     public static void main(String[] args) {
         int a=1;
-        while (a==1){
-        System.out.println("Menu");
-        System.out.println("1.  Iniciar sesion ");
-        System.out.println("2. Salir ");
-        int opcionMenu1 = mcgregor.nextInt();
-                
-        if(opcionMenu1 ==1){
-            ArrayList<Usuarios> usuariosValidos = new ArrayList<>();
+          ArrayList<Usuarios> usuariosValidos = new ArrayList<>();
             ArrayList<Libros> libros = new ArrayList<>();
             ArrayList<Articulos> articulos = new ArrayList<>();
             ArrayList<Conferencias> conferencias = new ArrayList<>();
@@ -26,6 +19,14 @@ public static Scanner mcgregorstring = new Scanner(System.in);
             usuariosValidos.add(profesor);
             Usuarios bibliotecario = new Usuarios("Diego","2305","bibliotecario");
             usuariosValidos.add(bibliotecario);
+        while (a==1){
+        System.out.println("Menu");
+        System.out.println("1.  Iniciar sesion ");
+        System.out.println("2. Salir ");
+        int opcionMenu1 = mcgregor.nextInt();
+                
+        if(opcionMenu1 ==1){
+          
             int b = 1;
             int nUsuario = 0;
             int contValidez = 0;
@@ -34,19 +35,21 @@ public static Scanner mcgregorstring = new Scanner(System.in);
             String nombreUsuario = mcgregorstring.nextLine();
             System.out.println("Ingrese su contraseña: ");
             String contrasenaUsuario = mcgregorstring.nextLine();
-            
-        
-                for (int i = 0; i < usuariosValidos.size(); i++) {
+            for (int i = 0; i < usuariosValidos.size(); i++) {
                     if (usuariosValidos.get(i).getNombreUsuario().equals(nombreUsuario) && usuariosValidos.get(i).getContrasenaUsuario().equals(contrasenaUsuario)) {
                         contValidez++;
 
+                    }
+                    else{
+                        continue;
                     }
 
                     if (contValidez == 1) {
                         
                         nUsuario = i;
                         break;
-                    } else {
+                    } 
+                    else {
 
                         contValidez = 0;
                     }
@@ -54,10 +57,10 @@ public static Scanner mcgregorstring = new Scanner(System.in);
             
             
             if(contValidez!=1){
-                System.out.println("Error, usuario/contrasena invalido, desea seguir?");
+                
                 int c=1;
                 while(c==1){
-                
+                System.out.println("Error, usuario/contrasena invalido, desea seguir?");
                 System.out.println("1. Volver a intentar");
                 System.out.println("2. Volver atras");
                 int opcionx= mcgregor.nextInt();
@@ -69,14 +72,15 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                     c=0;
                     b=0;
                 }
-                else{
+                else if(opcionx!=1 && opcionx!=2){
                     c=1;
                     System.out.println("Seleccion invalida");
             }
                 }
             }
 
-            if(contValidez==1){
+            else 
+                if(contValidez==1){
                int d=1;
                System.out.println("Has iniciado sesion con exito! Bienvenido "+usuariosValidos.get(nUsuario).getNombreUsuario());
                while(d==1){
@@ -89,6 +93,10 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                 System.out.println("5. Cerrar sesion");
                 int opcionGestor = mcgregor.nextInt();
                 if(opcionGestor ==1){
+                    if(libros.isEmpty() && articulos.isEmpty() && cursos.isEmpty() && conferencias.isEmpty()){
+                        System.out.println("No hay nada que listar! ");
+                    }
+                    else{
                     System.out.println("");
                     System.out.println("Libros: ");
                    for(Libros libro : libros){
@@ -126,7 +134,7 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                          System.out.println("");
                    }
                      System.out.println("");
-                    
+                    }
                 } //Listar Recursos
                 
                 else if(opcionGestor==2){
@@ -198,13 +206,13 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                         cursos.add(curso);
                         
                     }
-                    }
-                    
-                    
-                    
-                    
-                    
                     else{
+                        System.out.println("Error, seleccion invalida, vuelve a intentarlo");
+                    }
+                    }
+        
+                    
+                    else if (!usuariosValidos.get(nUsuario).getTipoUsuario().equals("profesor") || usuariosValidos.get(nUsuario).getTipoUsuario().equals("bibliotecario")){
                         System.out.println("Esta seccion no es accesible para ti, porfavor elige algo dentro de tus parametros ");
                     }
                 } // Crear Recursos
@@ -225,7 +233,12 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                      cont++;
                    }
                               int indiceEliminado=mcgregor.nextInt();
+                              if(indiceEliminado>libros.size()){
+                                  System.out.println("Ha intentado eliminar un elemento no existente, porfavor vuelva a intentarlo");
+                              }
+                              else if(indiceEliminado<=libros.size()){
                               libros.remove(indiceEliminado-1);
+                              }
                          }
                          
                          else if(opcionr==2){
@@ -236,8 +249,12 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                       cont++;
                    }
                               int indiceEliminado=mcgregor.nextInt();
+                              if(indiceEliminado > articulos.size()){
+                                  System.out.println("Ha intentado eliminar un elemento no existente, porfavor vuelva a intentarlo");
+                              }
+                              else if(indiceEliminado <= articulos.size()){
                               articulos.remove(indiceEliminado-1);
-                              
+                              }
                          }
                          else if(opcionr==3){
                              System.out.println("Selecciona la conferencia a eliminar por su indice: ");
@@ -247,8 +264,14 @@ public static Scanner mcgregorstring = new Scanner(System.in);
 
                    }
                                         int indiceEliminado=mcgregor.nextInt();
+                                        if(indiceEliminado>conferencias.size()){
+                                            System.out.println("Ha intentado eliminar un elemento no existente, porfavor vuelva a intentarlo");
+                                        }
+                                        else if(indiceEliminado<= conferencias.size()){
                                         conferencias.remove(indiceEliminado-1);
-                         }
+                                        }
+                                        
+                                        }
                          else if(opcionr==4){
                              System.out.println("Selecciona el curso a eliminar por su indice: ");
                              int cont=1;
@@ -257,16 +280,25 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                      
                    }
                               int indiceEliminado=mcgregor.nextInt();
+                              if(indiceEliminado> cursos.size()){
+                                  System.out.println("Ha intentado eliminar un elemento no existente, porfavor vuelva a intentarlo");
+                              }
+                              else if(indiceEliminado<=conferencias.size()){
+                                 
                               cursos.remove(indiceEliminado-1);
                          }
+                          else{
+                        System.out.println("Error, seleccion invalida, vuelve a intentarlo");
+                    }
                          
                          
                          
                     }
-                    else{
+                     else if (!usuariosValidos.get(nUsuario).getTipoUsuario().equals("bibliotecario")){
                         System.out.println("Esta seccion no es accesible para ti, porfavor elige algo dentro de tus parametros ");
                     }
-                } // Eliminar recursos
+                     }
+                }// Eliminar recursos
                 
                 else if(opcionGestor==4){
                     if(usuariosValidos.get(nUsuario).getTipoUsuario().equals("bibliotecario")){
@@ -278,6 +310,11 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                          int opcionr=mcgregor.nextInt();
                          
                          if(opcionr==1){
+                             if(libros.isEmpty()){
+                                 System.out.println("No hay libros que modificar");
+                             }
+                             
+                             else{
                     System.out.println("Elige el libro que deseas modificar de forma total por su indice: ");
                     int cont=1;
                    for(Libros libro : libros){
@@ -290,6 +327,10 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                    }
                     System.out.println(""); 
                     int indiceMod=mcgregor.nextInt()-1;
+                    if(indiceMod+1 > libros.size()){
+                        System.out.println("Error, has intentado modificar un elemento no existente, porfavor vuelve a intentarlo");
+                    }
+                    else if(indiceMod+1 <= libros.size()){
                              System.out.println("Ingrese el nuevo titulo del libro: ");
                              String nuevoTitulo = mcgregorstring.nextLine();
                              libros.get(indiceMod).setTitulo(nuevoTitulo);
@@ -306,9 +347,13 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                              String nuevaDisp = mcgregorstring.nextLine();
                              libros.get(indiceMod).setDisponibilidad(nuevaDisp);
                          }
-                         
+                         }
+                         }
                          else if(opcionr==2){
-                             
+                             if(articulos.isEmpty()){
+                                 System.out.println("No hay articulso que modificar");
+                             }
+                             else{
                              System.out.println("Elige el articulo que quieras modificar de forma total por su indice: ");
                              int cont=1;
                              for(Articulos articulo : articulos){
@@ -321,7 +366,11 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                    }
                     System.out.println("");
                     
-                    int indiceMod = mcgregor.nextInt();
+                    int indiceMod = mcgregor.nextInt()-1;
+                    if(indiceMod+1 > articulos.size()){
+                        System.out.println("Error, has intentado modificar un articulo no existente, porfavor vuelve a intentarlo");
+                    }
+                    else if(indiceMod+1 <= articulos.size()){
                              System.out.println("Ingrese el nuevo titulo del articulo: ");
                             String nuevoTitulo = mcgregorstring.nextLine();
                             articulos.get(indiceMod).setTitulo(nuevoTitulo);
@@ -338,8 +387,14 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                              String nuevaDisp = mcgregorstring.nextLine();
                              articulos.get(indiceMod).setAcceso(nuevaDisp);  
                          }
+                             }
+                         }
                          
                          else if(opcionr==3){
+                             if(conferencias.isEmpty()){
+                                 System.out.println("No hay conferencias que modificar");
+                             }
+                                 else{
                        System.out.println("Elige la conferencia que quieras modificar por indice: ");
                        int cont=1;
                        for(Conferencias conferencia : conferencias){
@@ -351,7 +406,11 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                        cont++;
                    }
                              System.out.println("");
-                             int indiceMod=mcgregor.nextInt();
+                             int indiceMod=mcgregor.nextInt()-1;
+                             if(indiceMod+1>conferencias.size()){
+                                 System.out.println("Error, has intentado modificar una conferencia no existente, porfavor vuelve a intentarlo");
+                             }
+                             else if(indiceMod <= conferencias.size()){
                              System.out.println("Ingrese el nuevo titulo de la conferencia: ");
                              String nuevoTitulo = mcgregorstring.nextLine();
                              conferencias.get(indiceMod).setTitulo(nuevoTitulo);
@@ -369,10 +428,16 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                              System.out.println("Ingrese el nuevo enlace: ");
                              String nuevoEnlace = mcgregorstring.nextLine();
                              conferencias.get(indiceMod).setEnlace(nuevoEnlace);
-                             
+                             }
                              
                          }
+                             
+                             }
                          else if(opcionr==4){
+                             if(cursos.isEmpty()){
+                                 System.out.println("No hay cursos que modificar");
+                             }
+                             else{
                              int cont=1;
                              System.out.println("Seleccione el curso a modificar por su indice: ");
                      for(Cursos curso : cursos){
@@ -384,7 +449,11 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                          cont++;
                    }
                      System.out.println("");
-                     int indiceMod= mcgregor.nextInt();
+                     int indiceMod= mcgregor.nextInt()-1;
+                     if(indiceMod+1>cursos.size()){
+                         System.out.println("Error, has intentado modificar un curso no existente, porfavor vuelve a intentarlo");
+                     }
+                     else if(indiceMod+1<=cursos.size()){
                              System.out.println("Ingrese el nuevo titulo del curso: ");
                              String nuevoTitulo = mcgregorstring.nextLine();
                              cursos.get(indiceMod).setTitulo(nuevoTitulo);
@@ -397,10 +466,14 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                              System.out.println("Ingrese la nuevaplataforma");
                              String nuevaPlataforma = mcgregorstring.nextLine();
                              cursos.get(indiceMod).setPlataforma(nuevaPlataforma);
-                     
+                     }
+                         }
+                         }
+                         else{
+                             System.out.println("Error, seleccion invalida");
                          }
                     }
-                    else{
+                    else if (!usuariosValidos.get(nUsuario).getTipoUsuario().equals("bibliotecario")){
                         System.out.println("Esta seccion no es accesible para ti, porfavor elige algo dentro de tus parametros ");
                     }  
                 } // Modificar recursos
@@ -416,15 +489,16 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                 
                 
                 
-                else{
+                else {
                     System.out.println("Seleccion invalida, vuelva a intentarlo");
                     
                 
             }
+                
+               }
                 }
-            }
             
-            else{
+            else if(contValidez ==0){
                 System.out.println("El usuario/contraseña ingresado no es valido, intentalo de nuevo!");
             }
                 
@@ -432,7 +506,7 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                 
                 
             
-            }
+            
             
             
             
@@ -450,17 +524,23 @@ public static Scanner mcgregorstring = new Scanner(System.in);
         }// fin de while
         
         
+        }
         
         
-        
-        if(opcionMenu1 ==2){
+        else if(opcionMenu1 ==2){
             a=0;
-        }// Salir
+        }
+            
+        else if (opcionMenu1 != 1 && opcionMenu1 !=2){
+            System.out.println("Error, opcion fuera de rango, vuelva a intentarlo");
+        }
+        
 
+
+        }
+    }// Fin del main
         
-    }
-        
-    }
+    }// Fin de la clase
     
-}
+
 
