@@ -226,6 +226,10 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                         System.out.println("4. Cursos ");
                          int opcionr=mcgregor.nextInt();
                          if(opcionr==1){
+                             if(libros.isEmpty()){
+                                 System.out.println("No hay libros que eliminar");
+                             }
+                             else{
                              System.out.println("Selecciona el libro a eliminar por su indice: ");
                              int cont=1;
                               for(Libros libro : libros){
@@ -239,9 +243,14 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                               else if(indiceEliminado<=libros.size()){
                               libros.remove(indiceEliminado-1);
                               }
+                             }
                          }
                          
                          else if(opcionr==2){
+                             if(articulos.isEmpty()){
+                                 System.out.println("No hay articulos que eliminar");
+                             }
+                             else{
                              System.out.println("Selecciona el articulo a eliminar por su indice: ");
                               for(Articulos articulo : articulos){
                                   int cont=1;
@@ -255,9 +264,14 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                               else if(indiceEliminado <= articulos.size()){
                               articulos.remove(indiceEliminado-1);
                               }
+                             }
                          }
                          else if(opcionr==3){
-                             System.out.println("Selecciona la conferencia a eliminar por su indice: ");
+                             if(conferencias.isEmpty()){
+                                 System.out.println("No hay conferencias que eliminar");
+                             }
+                             else{
+                            System.out.println("Selecciona la conferencia a eliminar por su indice: ");
                                      int cont=1;
                                         for(Conferencias conferencia : conferencias){
                        System.out.print(cont+". " + conferencia.getTitulo());
@@ -270,17 +284,22 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                                         else if(indiceEliminado<= conferencias.size()){
                                         conferencias.remove(indiceEliminado-1);
                                         }
-                                        
+                             }
                                         }
                          else if(opcionr==4){
+                             if(cursos.isEmpty()){
+                                 System.out.println("No hay cursos que eliminar");
+                             }
+                             else{
                              System.out.println("Selecciona el curso a eliminar por su indice: ");
                              int cont=1;
                               for(Cursos curso : cursos){
                        System.out.print(cont+". " + curso.getTitulo());
-                     
+                                  
                    }
+                              System.out.println("");
                               int indiceEliminado=mcgregor.nextInt();
-                              if(indiceEliminado> cursos.size()){
+                              if(indiceEliminado > cursos.size()){
                                   System.out.println("Ha intentado eliminar un elemento no existente, porfavor vuelva a intentarlo");
                               }
                               else if(indiceEliminado<=conferencias.size()){
@@ -291,7 +310,7 @@ public static Scanner mcgregorstring = new Scanner(System.in);
                         System.out.println("Error, seleccion invalida, vuelve a intentarlo");
                     }
                          
-                         
+                             }
                          
                     }
                      else if (!usuariosValidos.get(nUsuario).getTipoUsuario().equals("bibliotecario")){
